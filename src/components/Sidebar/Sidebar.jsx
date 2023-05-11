@@ -20,10 +20,13 @@ import blueLogo from '../../assets/images/lightLogo.png';
 import redLogo from '../../assets/images/darkLogo.png';
 
 function Sidebar({ setMobileOpen }) {
+    const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory)
     const theme = useTheme()
     const classes = useStyles()
     const { data, isFetching } = useGetGenresQuery()
     const dispatch = useDispatch()
+
+
     return (
         <>
             <Link to="/" className={classes.imageLink}>
