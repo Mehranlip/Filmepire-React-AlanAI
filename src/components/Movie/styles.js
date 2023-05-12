@@ -34,6 +34,7 @@ export default makeStyles((theme) => ({
         marginTop: '10px',
         marginBottom: 0,
         textAlign: 'center',
+
     },
 
 }))

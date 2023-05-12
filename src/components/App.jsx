@@ -1,10 +1,10 @@
 import React from 'react'
 import { CssBaseline } from '@mui/material'
-import { Route, Switch } from 'react-router-dom'
+import { Routes as Switch, Route } from 'react-router-dom';
 
 import useStyles from "./styles"
 
-import { Actors, Movies, NavBar, Profile, MovieInformation } from './index'
+import { Actors, Movies, NavBar, Profile, MovieInformation } from '.'
 
 
 
@@ -19,18 +19,14 @@ const App = () => {
 
 
                 <Switch>
-                    <Route exact path='/Movies/:id'>
-                        <MovieInformation />
-                    </Route>
-                    <Route path='/actors/:id'>
-                        <Actors />
-                    </Route>
-                    <Route path='/'>
-                        <Movies />
-                    </Route>
-                    <Route path='/profile:id'>
-                        <Profile />
-                    </Route>
+                    <Route exact path='/Movies/:id' element={<MovieInformation />} />
+
+                    <Route path='/actors/:id' element={<Actors />} />
+
+                    <Route path='/' element={<Movies />} />
+
+                    <Route path='/profile/:id' element={<Profile />} />
+
                 </Switch>
             </main>
         </div>

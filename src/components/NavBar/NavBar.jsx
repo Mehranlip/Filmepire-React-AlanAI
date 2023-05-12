@@ -14,10 +14,10 @@ import {
   Brightness4,
   Brightness7,
 } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { useTheme } from "@mui/material/styles";
 
-import { Sidebar, Search } from "..";
+import { Sidebar, Search, Profile } from "..";
 
 
 import useStyles from "./styles";
@@ -83,22 +83,21 @@ function NavBar() {
               <Button
                 color="inherit"
                 component={Link}
-                to="/profile/:id"
+                to={`/profile/${user.id}`}
                 className={classes.linkButton}
-                onClick={() => { }}
               >
                 {!isMobile && <>My Movies &nbsp;</>}
                 <Avatar
                   style={{ width: 30, height: 30 }}
                   alt="Profile"
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXr1dxOEImV2Emyo94H4I-eZ0T3saRUbvOGwB2GaeUVg&s"
-                />{" "}
+                />
               </Button>
             )}
           </div>
           {isMobile && <Search />}
         </Toolbar>
-      </AppBar>
+      </AppBar >
       <div>
         <nav className={classes.drawer}>
           {isMobile ? (

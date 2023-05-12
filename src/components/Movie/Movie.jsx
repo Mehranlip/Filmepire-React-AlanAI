@@ -13,7 +13,7 @@ function Movie({ movie, i }) {
                     {movie.poster_path ? <img alt={movie.title} className={classes.image} src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} /> :
                         <img alt={movie.title} className={classes.image} src={'https://www.fillmurray.com/200/300'} />
                     }
-                    <Typography className={classes.title} variant='h5' >
+                    <Typography className={classes.title} variant='h6' >
                         {movie.title}
                     </Typography>
                     <Tooltip disableTouchListener title={`${movie.vote_average} / 10`}>
