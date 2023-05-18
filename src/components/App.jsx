@@ -19,7 +19,7 @@ const App = () => {
 
 
                 <Switch>
-                    <Route exact path='/Movies/:id' element={<MovieInformation />} />
+                    <Route exact path="/movie/:id" element={<MovieInformation />} />
 
                     <Route path='/actors/:id' element={<Actors />} />
 
