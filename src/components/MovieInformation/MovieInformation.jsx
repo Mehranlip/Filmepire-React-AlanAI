@@ -5,12 +5,16 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
+
+
+import { useGetRecommendationsQuery } from '../../services/TMDB';
 import { useGetMovieQuery } from '../../services/TMDB';
 import useStyles from './styles';
 
 
 import genreCategoryIcons from '../../assets/genres and categories';
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
+import { MovieList } from '..';
 
 
 function MovieInformation() {
@@ -23,6 +27,9 @@ function MovieInformation() {
 
     const { id } = useParams()
     const { data, isFetching, error } = useGetMovieQuery(id)
+    const { data: recommendations, isFetching: isRecommendationsFetching } = useGetRecommendationsQuery({ list: "/recommendations", movie_id: id })
+
+    console.log(recommendations);
 
 
     if (isFetching) {
@@ -127,15 +134,19 @@ function MovieInformation() {
                                 </Button>
                             </ButtonGroup>
                         </Grid>
-
-
-
-
-
-
                     </div>
                 </Grid>
             </Grid>
+            <Box marginTop="5rem" width="100%">
+                <Typography variant='h3' gutterBottom align='center'>
+                    You might also like
+                </Typography>
+                {/* Loop recommended movies */}
+                {recommendations
+                    ? <MovieList movies={recommendations} numberOfMovies={12} />
+                    : <Box> Sorry nothing was found.</Box>
+                }
+            </Box>
         </Grid >
     )
 }
