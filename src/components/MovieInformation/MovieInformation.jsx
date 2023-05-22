@@ -20,6 +20,7 @@ import { MovieList } from '..';
 function MovieInformation() {
     const dispatch = useDispatch()
     const classes = useStyles();
+    const [open, setOpen] = useState(false);
 
     const isMovieFavorited = false
     const isMovieWatchlisted = false
@@ -115,7 +116,7 @@ function MovieInformation() {
                             <ButtonGroup size="medium" variant="outlined">
                                 <Button target="_blank" rel="noopener noreferrer" href={data?.homepage} endIcon={<Language />}>Website</Button>
                                 <Button target="_blank" rel="noopener noreferrer" href={`https://www.imdb.com/title/${data?.imdb_id}`} endIcon={<MovieIcon />}>IMDB</Button>
-                                <Button onClick={() => { }} endIcon={<Theaters />}>Trailer</Button>
+                                <Button onClick={() => setOpen(true)} endIcon={<Theaters />}>Trailer</Button>
                             </ButtonGroup>
                         </Grid>
 
@@ -147,6 +148,25 @@ function MovieInformation() {
                     : <Box> Sorry nothing was found.</Box>
                 }
             </Box>
+            <Modal
+                closeAfterTransition
+                className={classes.modal}
+                open={open}
+                onClose={() => setOpen(false)}
+            >
+                {data?.videos?.results?.length > 0 && (
+                    <iframe
+                        autoPlay
+                        className={classes.video}
+                        frameBorder="0"
+                        title="Trailer"
+                        src={`https://www.youtube.com/embed/${data?.videos?.results[0].key}?autoplay=1`}
+                        allow="autoplay"
+                        allowFullScreen
+                    />
+                )}
+
+            </Modal>
         </Grid >
     )
 }
