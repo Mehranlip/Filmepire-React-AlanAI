@@ -21,11 +21,13 @@ const App = () => {
                 <Switch>
                     <Route exact path="/movie/:id" element={<MovieInformation />} />
 
-                    <Route path='/actors/:id' element={<Actors />} />
+                    <Route exact path='/actors/:id' element={<Actors />} />
 
-                    <Route path='/' element={<Movies />} />
+                    <Route exact path='/' element={<Movies />} />
 
-                    <Route path='/profile/:id' element={<Profile />} />
+                    <Route exact path="/approved" element={<Movies />} />
+
+                    <Route exact path='/profile/:id' element={<Profile />} />
 
                 </Switch>
             </main>
