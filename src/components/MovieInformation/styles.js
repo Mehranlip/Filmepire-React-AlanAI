@@ -14,8 +14,9 @@ export default makeStyles((theme) => ({
     poster: {
         borderRadius: '20px',
         boxShadow: '0.5em 1em 1em rgb(64, 64, 70)',
-        width: '80%',
-        height: '100%',
+        width: '100%',
+        height: '90%',
+
         [theme.breakpoints.down('xl')]: {
             margin: '0 auto',
             width: '100%',
